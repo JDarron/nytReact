@@ -8,9 +8,24 @@ import Button from "./components/Button";
 class App extends Component {
   render() {
     return (
-        <Button
-          type= "Remove"
-        />
+      <div>
+        {/* SEARCH BUTTON */}
+      <Button
+        type= "search"
+        name="Search"
+      />
+      {/* SAVE BUTTON */}
+      <Button
+        type= "save"
+        name="Save"
+      /> 
+      {/* REMOVE BUTTON */}
+      <Button
+        type= "remove"
+        name="Remove"
+      />  
+
+      </div>
     );
   }
 };
