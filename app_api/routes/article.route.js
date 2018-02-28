@@ -1,7 +1,7 @@
 const express = require("express");
 
 const ctrl = require("../controllers/article.ctrl");
-// GRAP AND USE THE EXPRESS ROUTER 
+// GRAB AND USE THE EXPRESS ROUTER 
 const router = express.Router();
 
 
