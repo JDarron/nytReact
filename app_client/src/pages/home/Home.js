@@ -15,13 +15,17 @@ class Home extends Component {
             .catch(err => console.log(err));
     }; // END NYTIMES API
 
+
     render() {
         return (
-            <div className="container-fluid text-center">
+            <div className="container text-center">
                 <h1 className="page-header add-header">
-                    NYTimes React Home Page
+                    Search For an Article
                 </h1>
-                <Form />
+                <div className="col-xs-3">
+                    <Form />
+                </div>
+                
             </div>
         ); // END RETURN
     }; // END RENDER
