@@ -10,7 +10,7 @@ class Home extends Component {
     nyTimesApi = () => {
         API
             .search()
-            .then(res => console.log(res.data.data))
+            .then(res => console.log(res))
             .catch(err => console.log(err));
     };
 
