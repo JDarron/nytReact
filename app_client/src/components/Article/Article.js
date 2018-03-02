@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+// LINK FROM REACT ROUTER TO LINK TO ROUTE
+import {Link} from "react-router-dom";
 // FORM STYLE
 import "./Article.css";
 
@@ -11,7 +13,7 @@ class Article extends Component {
                 <div className="panel-body">
                     {/* ARTICLE */}
                     <p>
-                        Trump supporter gets punched in the face really hard.
+                        This is an interesting article title.
                     </p>
                     {/* END ARTICLE */}
                 </div>
