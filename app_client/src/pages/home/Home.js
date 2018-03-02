@@ -31,6 +31,9 @@ class Home extends Component {
                 <div className="row">
                     {/* SEARCH FOR ARTICLE */}
                     <div className="col-sm-4">
+                        <h2>
+                            Search
+                        </h2>
                         {/* FORM */}
                         <Form />
                         {/* END FORM */}
