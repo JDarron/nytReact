@@ -15,17 +15,19 @@ class Home extends Component {
             .catch(err => console.log(err));
     }; // END NYTIMES API
 
-
     render() {
         return (
             <div className="container text-center">
-                <h1 className="page-header add-header">
-                    Search For an Article
-                </h1>
-                <div className="col-xs-3">
-                    <Form />
+                <div className="row">
+                    <h1 className="col-sm-12 page-header add-header">
+                        Search For an Article
+                    </h1>
                 </div>
-                
+
+                <div className="col-xs-12 col-sm-4">
+                    <Form/>
+                </div>
+
             </div>
         ); // END RETURN
     }; // END RENDER
