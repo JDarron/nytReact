@@ -1,7 +1,8 @@
-
 import React, {Component} from "react";
 import API from "../../helpers/api/API";
+// COMPONENTS
 import Form from "../../components/Form";
+import Article from "../../components/Article"
 
 class Home extends Component {
 
@@ -18,45 +19,50 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="container text-center">
+            <div className="container">
                 {/* ROW ONE */}
                 <div className="row">
-                    <h1 className="col-sm-12 page-header add-header">
+                    <h1 className="col-sm-12 page-header add-header text-center">
                         Search For an Article
                     </h1>
                 </div>
                 {/* END ROW ONE */}
-
                 {/* ROW TWO */}
                 <div className="row">
                     {/* SEARCH FOR ARTICLE */}
                     <div className="col-sm-4">
-                        <h2>
-                            Search
-                        </h2>
+                        <div className="row">
+                            <h2 className="text-center">
+                                Search
+                            </h2>
+                        </div>
                         {/* FORM */}
-                        <Form />
+                        <Form/>
                         {/* END FORM */}
                         {/* SAVED */}
-                        <p>
-                            Saved Artices go here
-                        </p>
+                        <div className="row">
+                            <h3 className="text-center">
+                                Saved Artices go here
+                            </h3>
+                        </div>
                         {/* END SAVED */}
                     </div>
                     {/* END SEARCH FOR ARTICLE */}
-
                     {/* RESULTS */}
-                    <div className="col-sm-6">
+                    <div className="col-sm-8">
                         {/* RESULTS */}
-                            <p>
-                                Search Results Go here
-                            </p>
+                        <div className="row">
+                            <h2 className="text-center">
+                                Results
+                            </h2>
+                        </div>
+                        <Article/>
                         {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}
                 </div>
                 {/* END ROW TWO */}
-            </div> 
+            </div>
         ); // END RETURN
     }; // END RENDER
 }; // END HOME PAGE

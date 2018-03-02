@@ -6,18 +6,15 @@ import "./Article.css";
 class Article extends Component {
 
     render() {
-
         return (
-            <div className="row">
-                {/* PANEL */}
-                <div className="panel panel-default">
-                    <div className="panel-body">
-                        {/* ARTICLE */}
-                    
-                        {/* END ARTICLE */}
-                    </div>
+            <div className="panel panel-default">
+                <div className="panel-body">
+                    {/* ARTICLE */}
+                    <p>
+                        Trump supporter gets punched in the face really hard.
+                    </p>
+                    {/* END ARTICLE */}
                 </div>
-                {/* END PANEL */}
             </div>
         ); // END RETRURN
     }; // END RENDER
