@@ -1,3 +1,4 @@
+
 import React, {Component} from "react";
 import API from "../../helpers/api/API";
 import Form from "../../components/Form";
@@ -18,17 +19,41 @@ class Home extends Component {
     render() {
         return (
             <div className="container text-center">
+                {/* ROW ONE */}
                 <div className="row">
                     <h1 className="col-sm-12 page-header add-header">
                         Search For an Article
                     </h1>
                 </div>
+                {/* END ROW ONE */}
 
-                <div className="col-xs-12 col-sm-4">
-                    <Form/>
+                {/* ROW TWO */}
+                <div className="row">
+                    {/* SEARCH FOR ARTICLE */}
+                    <div className="col-sm-4">
+                        {/* FORM */}
+                        <Form />
+                        {/* END FORM */}
+                        {/* SAVED */}
+                        <p>
+                            Saved Artices go here
+                        </p>
+                        {/* END SAVED */}
+                    </div>
+                    {/* END SEARCH FOR ARTICLE */}
+
+                    {/* RESULTS */}
+                    <div className="col-sm-6">
+                        {/* RESULTS */}
+                            <p>
+                                Search Results Go here
+                            </p>
+                        {/* END RESULTS */}
+                    </div>
+                    {/* END RESULTS */}
                 </div>
-
-            </div>
+                {/* END ROW TWO */}
+            </div> 
         ); // END RETURN
     }; // END RENDER
 }; // END HOME PAGE
