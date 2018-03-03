@@ -1,41 +1,58 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-var axios = require("axios");
-var cheerio = require("cheerio");
-const mongojs = require("mongojs");
+// =====================================================================================
+// DEPENDENCIES
+// =====================================================================================
+const express = require('express')
+    , bodyParser = require('body-parser')
+    , axios = require('axios')
+    , logger = require('morgan')
+    , mongoose = require('mongoose')
+    , apiRoutes = require('./app_api/routes/article.route');
 
-const PORT = process.env.PORT || 3001;
+// set port
+const port = process.env.PORT || 3001;
 
-var app = express();
+// =====================================================================================
+// MIDDLEWARE
+// =====================================================================================
+// initialize express
+const app = express();
 
-// ROUTES FILE CONTAINING OUR ROUTES
-const routes = require("./app_api/routes/article.route");
+// configure body parser to parse requests as json
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// DB NAME AND COLLECTION 
-const dbUrl = "nyTimesReact";
-const collections = ["Articles"];
+// configure morgan to log requests to console
+app.use(logger('dev'));
 
-// HOOK MONGO CONFIG TO DB VARIABLES
-const db = mongojs(dbUrl, collections);
-// DB ERROR HANDLEING 
-db.on("error", function (err) {
-  console.log("Database error:" + error);
-}); // END ERR HANDLEING
+// serve up 'public' folder
+app.use(express.static('public'));
 
-// BODY PARSER SET UP
-app.use(logger("dev"));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static("public"));
-
-// API ROUTES
-app.use("/api", routes);
-
-// MONGOOSE SETUP
+// =====================================================================================
+// MONGOOSE CONFIG
+// =====================================================================================
+// set up mongoose to leverage built-in JavaScript ES6 Promises
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/nyTimesReact");
 
-app.listen(PORT, function () {
-    console.log("App running on port " + PORT + "!");
+// if deployed, use the deployed database. else, use the local mongoHeadlines database.
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/nyTimesReact';
+
+// connect to the MongoDB
+mongoose.connect(MONGODB_URI)
+    .then(() => {
+        console.log('Successfully connected to Mongo database');
+    })
+    .catch(err => {
+        console.error(err);
+    });
+
+// =====================================================================================
+// ROUTES
+// =====================================================================================
+app.use('/api', apiRoutes);
+
+// =====================================================================================
+// LISTENING
+// =====================================================================================
+app.listen(port, () => {
+    console.log(`App running on port ${port}`);
 });
