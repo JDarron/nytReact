@@ -5,15 +5,13 @@ const db = require("../models");
 module.exports = {
 
     createArticle: (req, res) => {
-        db
-            .Article
-            .create({title: req.body.title, link: req.body.link})
-            .then(dbArticle => {
-                console.log(dbArticle);
-            })
-            .catch(function (err) {
-                return res.json(err);
-            });
+        db.Article.create(req.body)
+        .then(dbArticle=> {
+          res.json(dbArticle);
+        })
+        .catch(function(err) {
+          res.json(err);
+        });
     }, // END CREATE
 
     findAllArticle: (req, res) => {}, // END FIND ALL
