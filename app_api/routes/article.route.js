@@ -11,7 +11,7 @@ router.post("/article", ctrl.createArticle);
 
 // router.get("/article/:id", ctrl.findOneArticle);
 
-// router.delete("/article/:id", ctrl.deleteArticle);
+router.delete("/article/:id", ctrl.deleteArticle);
 
 
 module.exports = router;
