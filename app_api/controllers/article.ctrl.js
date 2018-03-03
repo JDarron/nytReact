@@ -18,10 +18,10 @@ module.exports = {
 
     findAllArticle: (req, res) => {
         db
-            .Employee
-            .findAll({})
-            .then(dbEmp => {
-                res.json(dbEmp);
+            .Article
+            .find({})
+            .then(dbArticle => {
+                res.json(dbArticle);
             })
             .catch(err => {
                 console.error(err);
@@ -31,26 +31,23 @@ module.exports = {
 
     findOneArticle: (req, res) => {
         db
-            .Employee
-            .findOne({
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(dbEmp => {
-                res.json(dbEmp);
-            })
-            .catch(err => {
-                console.error(err);
+            .Article
+            .findOne({_id: req.params.id})
+            .then(dbArticle => {
+                // If we were able to successfully find an Article with the given id, send it back to the client
+                res.json(dbArticle);
+              })
+              .catch(function(err) {
+                // If an error occurred, send it to the client
                 res.json(err);
-            });
+              });
     }, // END FIND ONE
 
     deleteArticle: (req, res) => {
         console.log(req.params.id)
         db
             .Article
-            .remove({ _id: req.body.id })
+            .remove({_id: req.params.id})
             .then(dbArticle => {
                 res.json(dbArticle);
             })
