@@ -7,7 +7,7 @@ module.exports = {
         console.log("body: ", req.body);
         db
             .Article
-            .create(req.body)
+            .create({title: req.body.title, link: req.body.link, read: false})
             .then(dbArticle => {
                 res.json(dbArticle);
             })

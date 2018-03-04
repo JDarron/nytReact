@@ -13,6 +13,10 @@ var ArticleSchema = new Schema({
   link: {
     type: String,
     required: true
+  },
+
+  read: {
+      type: Boolean,
   }
 
 });
