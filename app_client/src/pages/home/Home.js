@@ -10,12 +10,12 @@ class Home extends Component {
         this.nyTimesApi();
     }; // END COMPONENT DID MOUNT
 
-    nyTimesApi = () => {
+    searchMovies = query => {
         API
-            .search()
-            .then(res => console.log(res.data.response.docs[0].web_url))
+            .search(query)
+            .then(res => this.setState({result: res.data}))
             .catch(err => console.log(err));
-    }; // END NYTIMES API
+    };
 
     render() {
         return (
@@ -37,8 +37,9 @@ class Home extends Component {
                             </h2>
                         </div>
                         {/* FORM */}
-                        <Form/>
-                        {/* END FORM */}
+                        <Form searchMovies={this
+                        .searchMovies
+                        .bind(this)}/> {/* END FORM */}
                         {/* SAVED */}
                         <div className="row">
                             <h3 className="text-center">
@@ -56,8 +57,7 @@ class Home extends Component {
                                 Results
                             </h2>
                         </div>
-                        <Article/>
-                        {/* END RESULTS */}
+                        <Article/> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}
                 </div>

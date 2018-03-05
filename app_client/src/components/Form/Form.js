@@ -28,7 +28,7 @@ class Form extends Component {
                         </div>
                         {/* SUBMIT BUTTON */}
                         <div className="clearfix">
-                            <button className="btn btn-primary pull-right" type="submit">
+                            <button onClick={this.props.searchMovies} className="btn btn-primary pull-right" type="submit">
                                 Find
                             </button>
                         </div>
