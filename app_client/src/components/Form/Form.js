@@ -21,6 +21,8 @@ class Form extends Component {
                             <div className="col-sm-10">
                                 <input
                                     type="text"
+                                    onChange={this.props.handleInputChange}
+                                    value={this.props.value}
                                     className="form-control"
                                     name="topic"
                                     placeholder="Topic..."/>
@@ -28,7 +30,7 @@ class Form extends Component {
                         </div>
                         {/* SUBMIT BUTTON */}
                         <div className="clearfix">
-                            <button onClick={this.props.searchMovies} className="btn btn-primary pull-right" type="submit">
+                            <button onClick={this.props.handleFormSubmit} className="btn btn-primary pull-right" type="submit">
                                 Find
                             </button>
                         </div>

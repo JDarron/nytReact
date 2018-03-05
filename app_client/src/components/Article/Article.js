@@ -8,17 +8,31 @@ import "./Article.css";
 class Article extends Component {
 
     render() {
+
+
         return (
-            <div className="panel panel-default">
-                <div className="panel-body">
-                    {/* ARTICLE */}
-                    <p>
-                        This is an interesting article title.
-                    </p>
-                    {/* END ARTICLE */}
-                </div>
+            <div> {
+            this
+            .props
+            .article
+            .map(artcl => {
+                // RETURN THIS COMPONENT
+                return (
+                    <div className="panel panel-default">
+                        <div className="panel-body">
+                            {/* ARTICLE */}
+                            <p>
+                                {artcl.headline.main}
+                            </p>
+                            {/* END ARTICLE */}
+                        </div>
+                    </div>
+                ); // END RETURN
+            }) // END RENDER IMAGE
+        }
             </div>
-        ); // END RETRURN
+        ); // END RETURN
+
     }; // END RENDER
 }; // END FORM COMPONENT
 

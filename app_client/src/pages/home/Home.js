@@ -4,18 +4,44 @@ import API from "../../helpers/api/API";
 import Form from "../../components/Form";
 import Article from "../../components/Article"
 
+let queryResults = [];
+
 class Home extends Component {
 
-    componentDidMount() {
-        this.nyTimesApi();
-    }; // END COMPONENT DID MOUNT
+    state = {
+        result: {},
+        topic: ""
+    };
 
-    searchMovies = query => {
+    searchNyt = query => {
         API
             .search(query)
-            .then(res => this.setState({result: res.data}))
+            .then(res => {
+                queryResults = [];
+                // FOR EACH OF THE ITEMS IN THE RESULT ARRAY
+                // PUSH THEM TO THE QUERY RESULTS ARRAY
+                res.data.response.docs.forEach(element => {
+                    queryResults.push(element);
+                });
+
+                console.log(queryResults)
+
+                this.setState({result: res.data})
+
+            })
             .catch(err => console.log(err));
-    };
+    }; // END NYT SEARCH
+
+    handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({[name]: value});
+    }; // END HANDLE INPUT CHANGE
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.searchNyt(this.state.search);
+    }; // END HANDLE FORM SUBMIT
 
     render() {
         return (
@@ -37,9 +63,10 @@ class Home extends Component {
                             </h2>
                         </div>
                         {/* FORM */}
-                        <Form searchMovies={this
-                        .searchMovies
-                        .bind(this)}/> {/* END FORM */}
+                        <Form
+                            value={this.state.search}
+                            handleInputChange={this.handleInputChange}
+                            handleFormSubmit={this.handleFormSubmit}/> {/* END FORM */}
                         {/* SAVED */}
                         <div className="row">
                             <h3 className="text-center">
@@ -57,7 +84,9 @@ class Home extends Component {
                                 Results
                             </h2>
                         </div>
-                        <Article/> {/* END RESULTS */}
+                        <Article
+                            article={queryResults}
+                        /> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}
                 </div>
