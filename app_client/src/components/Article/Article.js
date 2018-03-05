@@ -21,8 +21,11 @@ class Article extends Component {
                     <div className="panel panel-default">
                         <div className="panel-body">
                             {/* ARTICLE */}
-                            <p>
+                            <a key={artcl._id}href={artcl.web_url}>
                                 {artcl.headline.main}
+                            </a>
+                            <p>
+                                {artcl.snippet}
                             </p>
                             {/* END ARTICLE */}
                         </div>
