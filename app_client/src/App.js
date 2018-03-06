@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 // COMPONENTS
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 
 
 // HOME PAGE
@@ -29,7 +29,6 @@ class App extends Component {
             {/* ARTICLE ADD PAGE */}
             <Route exact path="/saved" component={Saved}/>
             {/* FOOTER COMPONENT */}
-            <Footer />
           </div>
         </Router>
       </div>

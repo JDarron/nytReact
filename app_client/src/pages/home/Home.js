@@ -22,12 +22,9 @@ class Home extends Component {
                 // PUSH THEM TO THE QUERY RESULTS ARRAY
                 res.data.response.docs.forEach(element => {
                     queryResults.push(element);
-                });
-
-                console.log(queryResults)
-
-                this.setState({result: res.data})
-
+                }); // FOR EACH STATEMENT
+                console.log(queryResults);
+                this.setState({result: res.data});
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
@@ -77,7 +74,7 @@ class Home extends Component {
                     </div>
                     {/* END SEARCH FOR ARTICLE */}
                     {/* RESULTS */}
-                    <div className="col-sm-8">
+                    <div className="col-sm-7">
                         {/* RESULTS */}
                         <div className="row">
                             <h2 className="text-center">
@@ -88,7 +85,7 @@ class Home extends Component {
                             article={queryResults}
                         /> {/* END RESULTS */}
                     </div>
-                    {/* END RESULTS */}
+                    {/* END RESULTS */}                    
                 </div>
                 {/* END ROW TWO */}
             </div>
