@@ -40,7 +40,7 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchNyt(this.state.search);
+        this.searchNyt(this.state.topic);
     }; // END HANDLE FORM SUBMIT
 
     render() {

@@ -11,28 +11,25 @@ class Article extends Component {
 
 
         return (
-            <div> {
-            this
-            .props
-            .article
-            .map(artcl => {
-                // RETURN THIS COMPONENT
-                return (
-                    <div className="panel panel-default">
-                        <div className="panel-body">
-                            {/* ARTICLE */}
-                            <a key={artcl._id}href={artcl.web_url}>
-                                {artcl.headline.main}
-                            </a>
-                            <p>
-                                {artcl.snippet}
-                            </p>
-                            {/* END ARTICLE */}
-                        </div>
-                    </div>
-                ); // END RETURN
-            }) // END RENDER IMAGE
-        }
+            <div> 
+                {
+                    this.props.article.map(artcl => {
+                        return (
+                            <div className="panel panel-default">
+                                <div className="panel-body">
+                                    {/* ARTICLE */}
+                                    <a key={artcl._id}href={artcl.web_url}>
+                                        {artcl.headline.main}
+                                    </a>
+                                    <p>
+                                        {artcl.snippet}
+                                    </p>
+                                    {/* END ARTICLE */}
+                                </div>
+                            </div>
+                        ); // END RETURN
+                    }) // END RENDER IMAGE
+                }
             </div>
         ); // END RETURN
 
