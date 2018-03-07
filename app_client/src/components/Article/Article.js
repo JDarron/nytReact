@@ -12,6 +12,11 @@ class Article extends Component {
 
         return (
             <div> 
+                <div className="row">
+                    <h2 className="text-center">
+                        {this.props.title}
+                    </h2>
+                </div>
                 {
                     this.props.article.map(artcl => {
                         return (

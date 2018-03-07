@@ -77,13 +77,9 @@ class Home extends Component {
                     {/* RESULTS */}
                     <div className="col-sm-7">
                         {/* RESULTS */}
-                        <div className="row">
-                            <h2 className="text-center">
-                                Results
-                            </h2>
-                        </div>
                         <Article
                             article={queryResults}
+                            title="Results"
                         /> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}                    
