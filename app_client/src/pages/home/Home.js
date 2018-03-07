@@ -20,6 +20,7 @@ class Home extends Component {
                 queryResults = [];
                 // FOR EACH OF THE ITEMS IN THE RESULT ARRAY
                 // PUSH THEM TO THE QUERY RESULTS ARRAY
+                console.log(res.data);
                 res.data.response.docs.forEach(element => {
                     queryResults.push(element);
                 }); // FOR EACH STATEMENT
