@@ -11,21 +11,21 @@ class Home extends Component {
     state = {
         result: {},
         topic: ""
-    };
+    }; // END STATE
 
     searchNyt = query => {
         API
-            .search(query)
+            .search()
             .then(res => {
                 queryResults = [];
                 // FOR EACH OF THE ITEMS IN THE RESULT ARRAY
                 // PUSH THEM TO THE QUERY RESULTS ARRAY
-                console.log(res.data);
-                res.data.response.docs.forEach(element => {
-                    queryResults.push(element);
-                }); // FOR EACH STATEMENT
-                console.log(queryResults);
-                this.setState({result: res.data});
+                console.log(res);
+                // res.data.response.docs.forEach(element => {
+                //     queryResults.push(element);
+                // }); // FOR EACH STATEMENT
+                // console.log(queryResults);
+                // this.setState({result: res.data});
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
@@ -38,7 +38,9 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchNyt(this.state.topic);
+        // this.searchNyt(this.state.topic);
+        this.searchNyt();
+        
     }; // END HANDLE FORM SUBMIT
 
     render() {

@@ -11,6 +11,8 @@ const express = require('express')
 // set port
 const port = process.env.PORT || 3001;
 
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/nyTimesReact';
+
 // =====================================================================================
 // MIDDLEWARE
 // =====================================================================================
@@ -32,9 +34,6 @@ app.use(express.static('./app_client/public'));
 // =====================================================================================
 // set up mongoose to leverage built-in JavaScript ES6 Promises
 mongoose.Promise = Promise;
-
-// if deployed, use the deployed database. else, use the local mongoHeadlines database.
-var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/nyTimesReact';
 
 // connect to the MongoDB
 mongoose.connect(MONGODB_URI)
