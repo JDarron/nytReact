@@ -21,12 +21,12 @@ class Article extends Component {
                     this.props.article.map(artcl => {
                         return (
 
-                            <div className="row">
+                            <div className="row" key={artcl._id.toString()}>
                                 <div className="col-sm-11">
                                     <div className="panel panel-default">
                                         <div className="panel-body">
                                             {/* ARTICLE */}
-                                            <a key={artcl._id}href={artcl.web_url}>
+                                            <a href={artcl.web_url} target="_blank">
                                                 {artcl.headline.main}
                                             </a>
                                             <p>
@@ -37,7 +37,7 @@ class Article extends Component {
                                     </div>
                                 </div>
                                 <div className="col-sm-1">
-                                    <Link class="btn btn-primary btn-lg" to={`/`}>
+                                    <Link className="btn btn-primary btn-lg" to={`/`}>
                                         <span className="glyphicon glyphicon glyphicon-floppy-disk"></span>
                                     </Link>
                                 </div> 
