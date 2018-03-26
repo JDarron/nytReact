@@ -15,7 +15,7 @@ class Home extends Component {
 
     searchNyt = query => {
         API
-            .search()
+            .search(query)
             .then(res => {
                 queryResults = [];
                 // FOR EACH OF THE ITEMS IN THE RESULT ARRAY
