@@ -10,6 +10,11 @@ var ArticleSchema = new Schema({
     required: true
   },
 
+  link: {
+    type: String,
+    required: true
+  },
+
   nytId: {
     type: String,
     required: true

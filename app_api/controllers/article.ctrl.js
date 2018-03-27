@@ -7,10 +7,11 @@ module.exports = {
             .Article
             .create({
                 title: req.body.title,
+                link: req.body.link,
                 nytId: req.body.nytId,
                 read: false
             })
-            .then(modelArticle => res.json(modelArticle))
+            .then(resArticle => res.json(resArticle))
             .catch(err => console.error(err));
     }, // END CREATE
 
@@ -18,7 +19,7 @@ module.exports = {
         model
             .Article
             .find({})
-            .then(modelArticle => res.json(modelArticle))
+            .then(resArticle => res.json(resArticle))
             .catch(err => console.error(err));
     }, // END READ ALL
 
@@ -26,18 +27,17 @@ module.exports = {
         model
             .Article
             .findOne({ _id: req.params.id })
-            .then(modelArticle => res.json(modelArticle))
+            .then(resArticle => res.json(resArticle))
             .catch(err => console.error(err));
     }, // END READ
 
     updateArticle: (req, res) => {
         model.Article.update(
-            req.body,
             {
-                where: {
-                    id: req.params.id
-                }
-            }).then(modelArticle => res.json(modelArticle))
+                _id: req.params.id
+            },
+            req.body)
+            .then(resArticle => res.json(resArticle))
             .catch(err => console.error(err));
     }, // END UPDATE
 
@@ -46,7 +46,7 @@ module.exports = {
         model
             .Article
             .remove({ _id: req.params.id })
-            .then(modelArticle => res.json(modelArticle))
+            .then(resArticle => res.json(`Deletion of ID:${req.params.id} was Successfull!`))
             .catch(err => console.error(err));
     } // END DELETE
 
