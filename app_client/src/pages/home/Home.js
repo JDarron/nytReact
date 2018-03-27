@@ -2,7 +2,10 @@ import React, {Component} from "react";
 import API from "../../helpers/api/API";
 // COMPONENTS
 import Form from "../../components/Form";
-import Article from "../../components/Article"
+import Article from "../../components/Article";
+// ROUTES
+import ArticleModels from "../../helpers/models/ArticleModel";
+
 
 let queryResults = [];
 
@@ -40,6 +43,20 @@ class Home extends Component {
         event.preventDefault();
         this.searchNyt(this.state.topic);
     }; // END HANDLE FORM SUBMIT
+
+    handleSave = event => {
+        event.preventDefault();
+        
+        
+        
+        // BUILD OUT THE HANDLE SAVE BUTTON FOR THE ARTICLE        
+        
+
+
+
+    }; // END SUBMIT
+
+
 
     render() {
         return (
