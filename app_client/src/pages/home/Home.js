@@ -4,8 +4,7 @@ import API from "../../helpers/api/API";
 import Form from "../../components/Form";
 import Article from "../../components/Article";
 // ROUTES
-import ArticleModels from "../../helpers/models/ArticleModel";
-
+import ArticleModel from "../../helpers/models/ArticleModel";
 
 let queryResults = [];
 
@@ -13,7 +12,12 @@ class Home extends Component {
 
     state = {
         result: {},
-        topic: ""
+        topic: "",
+        article: {
+            title: "",
+            link: "",
+            nytId: "",
+        }
     }; // END STATE
 
     searchNyt = query => {
@@ -44,19 +48,24 @@ class Home extends Component {
         this.searchNyt(this.state.topic);
     }; // END HANDLE FORM SUBMIT
 
-    handleSave = event => {
+    createArticle = event => {
         event.preventDefault();
-        
-        
-        
+        // ERROR HANDLING
+        console.log(this);
+    }; // END CREATE ARTICLE
+
+    saveArticle = event => {
+        ArticleModel
+            .create(this.state.article)
+            .then(resp => {
+                this
+                    .props
+                    .history
+                    .push("/")
+            })
+            .catch(err => console.error(err));
         // BUILD OUT THE HANDLE SAVE BUTTON FOR THE ARTICLE        
-        
-
-
-
     }; // END SUBMIT
-
-
 
     render() {
         return (
@@ -97,6 +106,7 @@ class Home extends Component {
                         <Article
                             article={queryResults}
                             title="Results"
+                            createArticle={this.createArticle}
                         /> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}                    

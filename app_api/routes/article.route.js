@@ -12,7 +12,7 @@ router.get("/article", ctrl.findAllArticle);
 router.get("/article/:id", ctrl.findOneArticle);
 // UPDATE
 router.put("/article/:id", ctrl.updateArticle);
-// DELTE
+// DELETE
 router.delete("/article/:id", ctrl.deleteArticle);
 // END C.R.U.D.
 

@@ -36,7 +36,7 @@ class Article extends Component {
                                     </div>
                                 </div>
                                 <div className="col-sm-1">
-                                    <Link className="btn btn-primary btn-lg" to={`/`}>
+                                    <Link className="btn btn-primary btn-lg" onClick={this.props.createArticle.bind(this)} to="/">
                                         <span className="glyphicon glyphicon glyphicon-floppy-disk"></span>
                                     </Link>
                                 </div> 
