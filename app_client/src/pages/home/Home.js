@@ -20,6 +20,12 @@ class Home extends Component {
         }
     }; // END STATE
 
+    /*
+        ==========================================
+        API CALLS
+        ==========================================
+    */
+   
     searchNyt = query => {
         API
             .search(query)
@@ -32,29 +38,14 @@ class Home extends Component {
                     queryResults.push(element);
                 }); // FOR EACH STATEMENT
                 console.log(queryResults);
-                this.setState({result: res.data});
+                this.setState({
+                    result: res.data
+                });
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
-    handleInputChange = event => {
-        const value = event.target.value;
-        const name = event.target.name;
-        this.setState({[name]: value});
-    }; // END HANDLE INPUT CHANGE
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.searchNyt(this.state.topic);
-    }; // END HANDLE FORM SUBMIT
-
-    createArticle = event => {
-        event.preventDefault();
-        // ERROR HANDLING
-        console.log(this);
-    }; // END CREATE ARTICLE
-
-    saveArticle = event => {
+    saveArticle = () => {
         ArticleModel
             .create(this.state.article)
             .then(resp => {
@@ -65,7 +56,28 @@ class Home extends Component {
             })
             .catch(err => console.error(err));
         // BUILD OUT THE HANDLE SAVE BUTTON FOR THE ARTICLE        
-    }; // END SUBMIT
+    }; // END SUBMIT   
+
+    /*
+        ==========================================
+        ON CLICK FUNCTIONS
+        ==========================================
+    */
+
+    handleInputChange = e => {
+        const value = e.target.value;
+        const name = e.target.name;
+        this.setState({[name]: value});
+    }; // END HANDLE INPUT CHANGE
+
+    handleFormSubmit = e => {
+        e.preventDefault();
+        this.searchNyt(this.state.topic);
+    }; // END HANDLE FORM SUBMIT
+
+    saveArticle = e => {
+
+    }; // END ARTICLE CLICK
 
     render() {
         return (
@@ -106,7 +118,6 @@ class Home extends Component {
                         <Article
                             article={queryResults}
                             title="Results"
-                            createArticle={this.createArticle}
                         /> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}                    

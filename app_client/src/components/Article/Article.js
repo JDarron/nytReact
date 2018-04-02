@@ -7,8 +7,15 @@ import "./Article.css";
 // FORM COMPONENT
 class Article extends Component {
 
-    render() {
+    state = {
+        article: {
+            title: this.props.title,
+            link: this.props.link,
+            nytId: this.props._id
+        }
+    }; // END STATE
 
+    render() {
         return (
             <div> 
                 <div className="row">
@@ -36,7 +43,7 @@ class Article extends Component {
                                     </div>
                                 </div>
                                 <div className="col-sm-1">
-                                    <Link className="btn btn-primary btn-lg" onClick={this.props.createArticle.bind(this)} to="/">
+                                    <Link className="btn btn-primary btn-lg" to="/">
                                         <span className="glyphicon glyphicon glyphicon-floppy-disk"></span>
                                     </Link>
                                 </div> 
