@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import API from "../../helpers/api/API";
 // COMPONENTS
 import Form from "../../components/Form";
@@ -6,18 +6,12 @@ import Article from "../../components/Article";
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
-let queryResults = [];
 
 class Home extends Component {
 
     state = {
-        result: {},
-        topic: "",
-        article: {
-            title: "",
-            link: "",
-            nytId: "",
-        }
+        results: [],
+        topic: ""
     }; // END STATE
 
     /*
@@ -25,29 +19,24 @@ class Home extends Component {
         API CALLS
         ==========================================
     */
-   
+
     searchNyt = query => {
         API
             .search(query)
             .then(res => {
-                queryResults = [];
                 // FOR EACH OF THE ITEMS IN THE RESULT ARRAY
                 // PUSH THEM TO THE QUERY RESULTS ARRAY
                 console.log(res);
-                res.data.response.docs.forEach(element => {
-                    queryResults.push(element);
-                }); // FOR EACH STATEMENT
-                console.log(queryResults);
                 this.setState({
-                    result: res.data
+                    results: res.data.response.docs
                 });
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
-    saveArticle = () => {
+    saveArticle = (id) => {
         ArticleModel
-            .create(this.state.article)
+            .create(id)
             .then(resp => {
                 this
                     .props
@@ -67,7 +56,7 @@ class Home extends Component {
     handleInputChange = e => {
         const value = e.target.value;
         const name = e.target.name;
-        this.setState({[name]: value});
+        this.setState({ [name]: value });
     }; // END HANDLE INPUT CHANGE
 
     handleFormSubmit = e => {
@@ -75,9 +64,10 @@ class Home extends Component {
         this.searchNyt(this.state.topic);
     }; // END HANDLE FORM SUBMIT
 
-    saveArticle = e => {
-
-    }; // END ARTICLE CLICK
+    handleAtricleSave = (artclId) => {
+        console.log(artclId);
+        this.saveArticle(artclId);
+    }; // END HANDLE ARTICLE SAVE
 
     render() {
         return (
@@ -102,7 +92,7 @@ class Home extends Component {
                         <Form
                             value={this.state.search}
                             handleInputChange={this.handleInputChange}
-                            handleFormSubmit={this.handleFormSubmit}/> {/* END FORM */}
+                            handleFormSubmit={this.handleFormSubmit} /> {/* END FORM */}
                         {/* SAVED */}
                         <div className="row">
                             <h3 className="text-center">
@@ -116,11 +106,12 @@ class Home extends Component {
                     <div className="col-sm-7">
                         {/* RESULTS */}
                         <Article
-                            article={queryResults}
+                            articles={this.state.results}
                             title="Results"
+                            handleAtricleSave={this.handleAtricleSave}
                         /> {/* END RESULTS */}
                     </div>
-                    {/* END RESULTS */}                    
+                    {/* END RESULTS */}
                 </div>
                 {/* END ROW TWO */}
             </div>

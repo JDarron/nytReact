@@ -6,9 +6,7 @@ module.exports = {
         model
             .Article
             .create({
-                title: req.body.title,
-                link: req.body.link,
-                nytId: req.body.nytId,
+                articleId: req.body.articleId,
                 read: false
             })
             .then(resArticle => res.json(resArticle))

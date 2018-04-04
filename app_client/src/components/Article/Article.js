@@ -11,7 +11,8 @@ class Article extends Component {
         article: {
             title: this.props.title,
             link: this.props.link,
-            nytId: this.props._id
+            nytId: this.props._id,
+            event: window.event
         }
     }; // END STATE
 
@@ -24,9 +25,9 @@ class Article extends Component {
                     </h2>
                 </div>
                 {
-                    this.props.article.map(artcl => {
+                    this.props.articles.map(artcl => {
+                        //console.log(artcl);
                         return (
-
                             <div className="row" key={artcl._id.toString()}>
                                 <div className="col-sm-11">
                                     <div className="panel panel-default">
@@ -43,7 +44,10 @@ class Article extends Component {
                                     </div>
                                 </div>
                                 <div className="col-sm-1">
-                                    <Link className="btn btn-primary btn-lg" to="/">
+                                    <Link 
+                                    className="btn btn-primary btn-lg" 
+                                    onClick={this.props.handleAtricleSave.bind(this, artcl._id)}  
+                                    to="/">
                                         <span className="glyphicon glyphicon glyphicon-floppy-disk"></span>
                                     </Link>
                                 </div> 

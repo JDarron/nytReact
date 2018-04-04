@@ -9,7 +9,7 @@ export default {
      * @param {*} article
      */
     create(article) {
-        return axios.post(ROUTE, article);
+        return axios.post(ROUTE, {articleId: article});
     },
 
     /**

@@ -4,13 +4,8 @@ var Schema = mongoose.Schema;
 
 
 var ArticleSchema = new Schema({
-
-  title: {
-    type: String,
-    required: true
-  },
   
-  nytId: {
+  articleId: {
     type: String,
     required: true
   },
