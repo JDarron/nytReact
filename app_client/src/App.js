@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 // HOME PAGE
 import Home from "./pages/home/Home";
 // ARTICLE PAGE
-import Saved from "./pages/saved/Saved";
+import Archive from "./pages/archive/Archive";
 
 import './App.css';
 
@@ -27,7 +27,7 @@ class App extends Component {
             {/* HOME PAGE */}
             <Route exact path="/" component={Home}/>
             {/* ARTICLE ADD PAGE */}
-            <Route exact path="/saved" component={Saved}/>
+            <Route exact path="/archive" component={Archive}/>
             {/* FOOTER COMPONENT */}
           </div>
         </Router>

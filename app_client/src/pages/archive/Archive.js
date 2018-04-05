@@ -9,7 +9,7 @@ class Saved extends Component {
         return (
             <div className="container text-center">
                 <h1 className="col-sm-12 page-header add-header"> 
-                    Saved Articles
+                    Archive
                 </h1>
             </div>
         ); // END RETURN

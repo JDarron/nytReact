@@ -23,7 +23,7 @@ class Navbar extends Component {
                                 </a>
                             </li>
                             <li >
-                                <a href="/saved">
+                                <a href="/archive">
                                     Archive
                                     <span className="sr-only">
                                         (current)
