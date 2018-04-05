@@ -3,6 +3,7 @@ import API from "../../helpers/api/API";
 // COMPONENTS
 import Form from "../../components/Form";
 import Article from "../../components/Article";
+import SavedArticle from "../../components/SavedArticle"
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
@@ -94,6 +95,9 @@ class Home extends Component {
                             <h3 className="text-center">
                                 Saved Artices go here
                             </h3>
+                        </div>
+                        <div className="row">
+                            <SavedArticle/>
                         </div>
                         {/* END SAVED */}
                     </div>

@@ -7,15 +7,6 @@ import "./Article.css";
 // FORM COMPONENT
 class Article extends Component {
 
-    state = {
-        article: {
-            title: this.props.title,
-            link: this.props.link,
-            nytId: this.props._id,
-            event: window.event
-        }
-    }; // END STATE
-
     render() {
         return (
             <div> 
