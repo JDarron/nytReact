@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 // LINK FROM REACT ROUTER TO LINK TO ROUTE
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 // FORM STYLE
 import "./SavedArticle.css";
 
@@ -12,7 +12,7 @@ class SavedArticle extends Component {
             <div> 
                 <div className="panel panel-default">
                     <div className="panel-body">
-
+                        
                     </div>
                 </div>
             </div>

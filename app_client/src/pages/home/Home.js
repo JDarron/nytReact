@@ -93,7 +93,7 @@ class Home extends Component {
                         {/* SAVED */}
                         <div className="row">
                             <h3 className="text-center">
-                                Saved Artices go here
+                                Saved Artices
                             </h3>
                         </div>
                         <div className="row">
