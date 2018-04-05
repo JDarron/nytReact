@@ -1,14 +1,19 @@
 import axios from "axios";
 
 const APIKEY = "dde781c06452450886e74bef516a660f";
-const BASEURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${APIKEY}&q=`;
-
-
-// Export an object with a "search" method that searches the Giphy API for the
-// passed query
+const BASEURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${APIKEY}`;
+// PARAM REQUIRMENTS 
+const keyWordParam = '&q=';
+const idParam = '&fq=_id:'
 
 export default {
-    search : function (query) {
-        return axios.get(BASEURL + query);
+    
+    searchKeyWord: query => {
+        return axios.get(BASEURL + keyWordParam + query);
+    },
+
+    serchId: id => {
+        return axios.get(BASEURL + idParam + `("${id}")`);
     }
-};
+
+}; // END EXPORT

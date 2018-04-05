@@ -22,11 +22,8 @@ class Home extends Component {
 
     searchNyt = query => {
         API
-            .search(query)
+            .searchKeyWord(query)
             .then(res => {
-                // FOR EACH OF THE ITEMS IN THE RESULT ARRAY
-                // PUSH THEM TO THE QUERY RESULTS ARRAY
-                console.log(res);
                 this.setState({
                     results: res.data.response.docs
                 });
@@ -65,7 +62,6 @@ class Home extends Component {
     }; // END HANDLE FORM SUBMIT
 
     handleAtricleSave = (artclId) => {
-        console.log(artclId);
         this.saveArticle(artclId);
     }; // END HANDLE ARTICLE SAVE
 
