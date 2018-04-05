@@ -7,7 +7,6 @@ import SavedArticle from "../../components/SavedArticle"
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
-
 class Home extends Component {
 
     state = {
@@ -32,7 +31,7 @@ class Home extends Component {
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
-    saveArticle = (id) => {
+    saveArticle = id => {
         ArticleModel
             .create(id)
             .then(resp => {
@@ -62,7 +61,7 @@ class Home extends Component {
         this.searchNyt(this.state.topic);
     }; // END HANDLE FORM SUBMIT
 
-    handleAtricleSave = (artclId) => {
+    handleAtricleSave = artclId => {
         this.saveArticle(artclId);
     }; // END HANDLE ARTICLE SAVE
 
@@ -117,6 +116,6 @@ class Home extends Component {
             </div>
         ); // END RETURN
     }; // END RENDER
-}; // END HOME PAGE
+}; // END PAGE
 
 export default Home;
