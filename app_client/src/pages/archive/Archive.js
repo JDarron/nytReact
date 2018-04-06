@@ -1,8 +1,38 @@
 import React, {Component} from "react";
-
+import API from "../../helpers/api/API";
+// ROUTES
+import ArticleModel from "../../helpers/models/ArticleModel";
 
 
 class Saved extends Component {
+
+    state = {
+
+    }; // END STATE
+
+    searchNyt = query => {
+        API
+            .serchId(query)
+            .then(res => {
+                this.setState({
+                    results: res.data.response.docs
+                });
+            })
+            .catch(err => console.log(err));
+    }; // END NYT SEARCH
+
+    componentDidMount = () => {
+        ArticleModel
+            .getAll()
+            .then(resp => {
+                console.log(resp);
+                this
+                    .props
+                    .history
+                    .push("/archive")
+            })
+            .catch(err => console.error(err));
+    }// END COMPONENT DID MOUNT
 
     render() {
 
