@@ -7,16 +7,14 @@ import ArticleModel from "../../helpers/models/ArticleModel";
 class Saved extends Component {
 
     state = {
-
+        apiResults: []
     }; // END STATE
 
     searchNyt = query => {
         API
             .serchId(query)
             .then(res => {
-                this.setState({
-                    results: res.data.response.docs
-                });
+                this.state.apiResults.push(res);
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
@@ -25,7 +23,13 @@ class Saved extends Component {
         ArticleModel
             .getAll()
             .then(resp => {
-                console.log(resp);
+                let dbArticles = resp.data;
+                console.log(resp.data);
+                dbArticles.forEach(element => {
+                    this.searchNyt(element.articleId);
+                });
+
+                
                 this
                     .props
                     .history
