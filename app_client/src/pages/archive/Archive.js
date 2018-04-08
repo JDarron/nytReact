@@ -3,8 +3,7 @@ import API from "../../helpers/api/API";
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
-
-class Saved extends Component {
+class Archive extends Component {
 
     state = {
         apiResults: [],
@@ -26,19 +25,26 @@ class Saved extends Component {
         ArticleModel
             .getAll()
             .then(resp => {
-                
+
                 let dbArticles = resp.data;
+                let dbArticlesLength = dbArticles.length;
                 const oneArticle = 1;
+
+                console.log("This is from the db.")
+                // CONSOLE LOG ERROR HANDLING
                 console.log(dbArticles);
 
-                dbArticles.forEach(elem => {
-                    if(dbArticles.length === oneArticle) {
-                        this.searchNyt(elem.articleId);
-                    } else {
-                        
-                    };
-                }); // END FOR EACH
-                
+                const idArrrayForTesting = ["5ac53ecd068401528a2a27ff", "5ac53ecd068401528a2a27ff", "5aa0024f5d97b300013941eb"];
+                this.searchNyt(idArrrayForTesting);
+
+                // dbArticles.forEach(elem => {
+                //     console.log(elem.articleId);
+                //     this.setState({
+                //         idQuery: elem.articleId
+                //     })
+                //     console.log();
+                // });
+
                 this
                     .props
                     .history
@@ -56,7 +62,7 @@ class Saved extends Component {
             </div>
         ); // END RETURN
     }; // END RENDER
-    
+
 }; // END SAVED PAGE
 
-export default Saved;
+export default Archive;

@@ -13,7 +13,7 @@ export default {
     },
 
     serchId: id => {
-        return axios.get(BASEURL + idParam + `("${id}")`);
+        return axios.get(BASEURL + idParam + `(${id})`);
     }
 
 }; // END EXPORT
