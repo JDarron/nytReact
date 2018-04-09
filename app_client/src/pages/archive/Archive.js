@@ -14,41 +14,35 @@ class Archive extends Component {
         API
             .serchId(query)
             .then(res => {
-                this.state.apiResults.push(res);
+                console.log(res);
+                // this.setState({
+                //     apiResults: [...this.state.apiResults, ]
+                // });
                 console.log("State: ")
                 console.log(this.state.apiResults);
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
+    pushArticleIdToState = dbArticles => {
+       return dbArticles.forEach(elem => {
+            this.setState({
+                idQuery: [...this.state.idQuery, elem.articleId]
+            });
+        });
+    }; // END PUSH
+
     componentDidMount = () => {
         ArticleModel
             .getAll()
             .then(resp => {
-
-                let dbArticles = resp.data;
-                let dbArticlesLength = dbArticles.length;
-                const oneArticle = 1;
-
-                console.log("This is from the db.")
-                // CONSOLE LOG ERROR HANDLING
-                console.log(dbArticles);
-
-                const idArrrayForTesting = ["5ac53ecd068401528a2a27ff", "5ac53ecd068401528a2a27ff", "5aa0024f5d97b300013941eb"];
-                this.searchNyt(idArrrayForTesting);
-
-                // dbArticles.forEach(elem => {
-                //     console.log(elem.articleId);
-                //     this.setState({
-                //         idQuery: elem.articleId
-                //     })
-                //     console.log();
-                // });
-
-                this
-                    .props
-                    .history
-                    .push("/archive");
+                const articlesForPushing = resp.data;
+                this.pushArticleIdToState(articlesForPushing);
+            })
+            .then(artcls => {
+                console.log(artcls);
+                console.log(this.state.idQuery);
+                return this.searchNyt(this.state.idQuery)
             })
             .catch(err => console.error(err));
     }// END COMPONENT DID MOUNT
