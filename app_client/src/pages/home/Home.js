@@ -14,12 +14,6 @@ class Home extends Component {
         topic: ""
     }; // END STATE
 
-    /*
-        ==========================================
-        API CALLS
-        ==========================================
-    */
-
     searchNyt = query => {
         API
             .searchKeyWord(query)
@@ -40,15 +34,8 @@ class Home extends Component {
                     .history
                     .push("/")
             })
-            .catch(err => console.error(err));
-        // BUILD OUT THE HANDLE SAVE BUTTON FOR THE ARTICLE        
+            .catch(err => console.error(err));     
     }; // END SUBMIT   
-
-    /*
-        ==========================================
-        ON CLICK FUNCTIONS
-        ==========================================
-    */
 
     handleInputChange = e => {
         const value = e.target.value;
@@ -107,7 +94,7 @@ class Home extends Component {
                         <Article
                             articles={this.state.results}
                             title="Results"
-                            handleAtricleSave={this.handleAtricleSave}
+                            handleAtricleClick={this.handleAtricleSave}
                         /> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}

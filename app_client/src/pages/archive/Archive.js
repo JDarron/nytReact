@@ -1,32 +1,32 @@
 import React, { Component } from "react";
 import API from "../../helpers/api/API";
+import Article from "../../components/Article";
+
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
 class Archive extends Component {
 
     state = {
-        apiResults: [],
+        results: [],
         idQuery: []
     }; // END STATE
 
     searchNyt = query => {
-        console.log(query.join(","));
         API
             .serchId(query)
             .then(res => {
-                console.log(res);
-                // this.setState({
-                //     apiResults: [...this.state.apiResults, ]
-                // // });
-                // console.log("State: ")
-                // console.log(this.state.apiResults);
+                const reultsFromApi = res.data.response.docs;
+                this.setState({
+                    results: reultsFromApi
+                });
+                console.log(this.state.results);
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
     pushArticleIdToState = dbArticles => {
-       return dbArticles.forEach(elem => {
+        return dbArticles.forEach(elem => {
             this.setState({
                 idQuery: [...this.state.idQuery, elem.articleId]
             }); // END SET STATE
@@ -41,19 +41,25 @@ class Archive extends Component {
                 this.pushArticleIdToState(articlesForPushing);
             })
             .then(() => {
-                console.log(this.state.idQuery.join('", "'));
-
-                this.searchNyt(this.state.idQuery);
+                return this.searchNyt(this.state.idQuery);
             })
             .catch(err => console.error(err));
     }// END COMPONENT DID MOUNT
 
+    handleAtricleDelete = () => {
+        console.log("In the handle delete function.");
+    }; // END HANDLE DELETE
+
     render() {
         return (
             <div className="container text-center">
-                <h1 className="col-sm-12 page-header add-header">
-                    Archive
-                </h1>
+                <div className="col-sm-12">
+                    <Article
+                        articles={this.state.results}
+                        title="Archive"
+                        handleAtricleClick={this.handleAtricleDelete}
+                    />
+                </div>
             </div>
         ); // END RETURN
     }; // END RENDER
