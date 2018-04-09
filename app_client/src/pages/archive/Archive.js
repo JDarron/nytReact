@@ -11,6 +11,7 @@ class Archive extends Component {
     }; // END STATE
 
     searchNyt = query => {
+        console.log(query.join(","));
         API
             .serchId(query)
             .then(res => {
@@ -40,9 +41,9 @@ class Archive extends Component {
                 this.pushArticleIdToState(articlesForPushing);
             })
             .then(() => {
-                console.log(this.state.idQuery.toString());
+                console.log(this.state.idQuery.join('", "'));
 
-                this.searchNyt(`${this.state.idQuery.toString()}`);
+                this.searchNyt(this.state.idQuery);
             })
             .catch(err => console.error(err));
     }// END COMPONENT DID MOUNT

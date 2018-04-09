@@ -13,7 +13,8 @@ export default {
     },
 
     serchId: id => {
-        return axios.get(BASEURL + idParam + `(${id})`);
+        const joinedIds = id.join('", "');
+        return axios.get(BASEURL + idParam + `("${joinedIds}")`);
     }
 
 }; // END EXPORT
