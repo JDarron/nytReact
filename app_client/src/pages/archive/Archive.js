@@ -17,9 +17,9 @@ class Archive extends Component {
                 console.log(res);
                 // this.setState({
                 //     apiResults: [...this.state.apiResults, ]
-                // });
-                console.log("State: ")
-                console.log(this.state.apiResults);
+                // // });
+                // console.log("State: ")
+                // console.log(this.state.apiResults);
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
@@ -28,8 +28,8 @@ class Archive extends Component {
        return dbArticles.forEach(elem => {
             this.setState({
                 idQuery: [...this.state.idQuery, elem.articleId]
-            });
-        });
+            }); // END SET STATE
+        }); // END FOR EACH
     }; // END PUSH
 
     componentDidMount = () => {
@@ -39,10 +39,10 @@ class Archive extends Component {
                 const articlesForPushing = resp.data;
                 this.pushArticleIdToState(articlesForPushing);
             })
-            .then(artcls => {
-                console.log(artcls);
-                console.log(this.state.idQuery);
-                return this.searchNyt(this.state.idQuery)
+            .then(() => {
+                console.log(this.state.idQuery.toString());
+
+                this.searchNyt(`${this.state.idQuery.toString()}`);
             })
             .catch(err => console.error(err));
     }// END COMPONENT DID MOUNT
