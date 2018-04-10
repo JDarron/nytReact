@@ -39,7 +39,7 @@ class Article extends Component {
                                     className="btn btn-primary btn-lg" 
                                     onClick={this.props.handleAtricleClick.bind(this, artcl._id)}  
                                     to="/">
-                                        <span className="glyphicon glyphicon glyphicon-floppy-disk"></span>
+                                        <span className={this.props.glyphicon}></span>
                                     </Link>
                                 </div> 
                             </div>

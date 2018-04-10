@@ -3,7 +3,7 @@ import API from "../../helpers/api/API";
 // COMPONENTS
 import Form from "../../components/Form";
 import Article from "../../components/Article";
-import SavedArticle from "../../components/SavedArticle"
+// import SavedArticle from "../../components/SavedArticle"
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
@@ -18,8 +18,9 @@ class Home extends Component {
         API
             .searchKeyWord(query)
             .then(res => {
+                const resultsFromApi = res.data.response.docs;
                 this.setState({
-                    results: res.data.response.docs
+                    results: resultsFromApi
                 });
             })
             .catch(err => console.log(err));
@@ -75,17 +76,7 @@ class Home extends Component {
                         <Form
                             value={this.state.search}
                             handleInputChange={this.handleInputChange}
-                            handleFormSubmit={this.handleFormSubmit} /> {/* END FORM */}
-                        {/* SAVED */}
-                        <div className="row">
-                            <h3 className="text-center">
-                                Saved Artices
-                            </h3>
-                        </div>
-                        <div className="row">
-                            <SavedArticle/>
-                        </div>
-                        {/* END SAVED */}
+                            handleFormSubmit={this.handleFormSubmit} />
                     </div>
                     {/* END SEARCH FOR ARTICLE */}
                     {/* RESULTS */}
@@ -95,6 +86,7 @@ class Home extends Component {
                             articles={this.state.results}
                             title="Results"
                             handleAtricleClick={this.handleAtricleSave}
+                            glyphicon="glyphicon glyphicon glyphicon-floppy-disk"
                         /> {/* END RESULTS */}
                     </div>
                     {/* END RESULTS */}

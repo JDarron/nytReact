@@ -16,9 +16,9 @@ class Archive extends Component {
         API
             .serchId(query)
             .then(res => {
-                const reultsFromApi = res.data.response.docs;
+                const resultsFromApi = res.data.response.docs;
                 this.setState({
-                    results: reultsFromApi
+                    results: resultsFromApi
                 });
                 console.log(this.state.results);
             })
@@ -58,6 +58,7 @@ class Archive extends Component {
                         articles={this.state.results}
                         title="Archive"
                         handleAtricleClick={this.handleAtricleDelete}
+                        glyphicon="glyphicon glyphicon-book"
                     />
                 </div>
             </div>
