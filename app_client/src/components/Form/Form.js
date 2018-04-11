@@ -10,7 +10,7 @@ class Form extends Component {
             <form className="form-wrapper">
                 <div className="row">
                     {/* TOPIC SEARCH */}
-                    <div className="form-group form-wrapper col-sm-4">
+                    <div className="form-group form-wrapper col-sm-11">
                         <input
                             type="text"
                             onChange={this.props.handleInputChange}
@@ -22,8 +22,8 @@ class Form extends Component {
                     {/* SUBMIT BUTTON */}
                     <div className="clearfix col-sm-1">
                         <button onClick={this.props.handleFormSubmit} className="btn btn-primary pull-right" type="submit">
-                            Find
-                    </button>
+                            Search
+                        </button>
                     </div>
                 </div>
             </form>
