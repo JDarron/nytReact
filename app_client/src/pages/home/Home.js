@@ -35,7 +35,7 @@ class Home extends Component {
                     .history
                     .push("/")
             })
-            .catch(err => console.error(err));     
+            .catch(err => console.error(err));
     }; // END SUBMIT   
 
     handleInputChange = e => {
@@ -63,12 +63,13 @@ class Home extends Component {
                     </h1>
                 </div>
                 {/* END ROW ONE */}
+
                 {/* ROW TWO */}
                 <div className="row">
                     {/* SEARCH FOR ARTICLE */}
-                    <div className="col-sm-4">
+                    <div className="col-sm-12">
                         <div className="row">
-                            <h2 className="text-center">
+                            <h2>
                                 Search
                             </h2>
                         </div>
@@ -79,6 +80,8 @@ class Home extends Component {
                             handleFormSubmit={this.handleFormSubmit} />
                     </div>
                     {/* END SEARCH FOR ARTICLE */}
+                </div>
+                <div className="Row">
                     {/* RESULTS */}
                     <div className="col-sm-7">
                         {/* RESULTS */}
