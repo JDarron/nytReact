@@ -52,7 +52,7 @@ class Archive extends Component {
 
     render() {
         return (
-            <div className="container text-center">
+            <div className="container">
                 <div className="col-sm-12">
                     <Article
                         articles={this.state.results}
