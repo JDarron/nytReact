@@ -87,6 +87,7 @@ class Home extends Component {
                                 articles={this.state.results}
                                 title="Results"
                                 handleAtricleClick={this.saveArticle}
+                                handleLinkClick={this.scrapeArticleFromPage}
                                 glyphicon="glyphicon glyphicon glyphicon-floppy-disk"
                             />
                         </div>

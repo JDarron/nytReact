@@ -10,7 +10,7 @@ class NavbarComponent extends Component {
     render() {
         // RETURN
         return (
-            <Navbar inverse collapseOnSelect className="navbar">
+            <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="/">NYT Scrub</a>
