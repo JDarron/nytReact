@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../helpers/api/API";
+import SCRAPER from "../../helpers/scrapers/articleScraper";
 // COMPONENTS
 import Form from "../../components/Form";
 import Article from "../../components/Article";
@@ -27,6 +28,15 @@ class Home extends Component {
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
+    scrapeArticleFromPage = url => {
+        SCRAPER
+            .scrapeArticle(url)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => console.log(err));
+    }; // END SCRAPER
+
     saveArticle = id => {
         ArticleModel
             .create(id)
@@ -50,10 +60,6 @@ class Home extends Component {
         this.searchNyt(this.state.topic);
     }; // END HANDLE FORM SUBMIT
 
-    handleAtricleSave = artclId => {
-        this.saveArticle(artclId);
-    }; // END HANDLE ARTICLE SAVE
-
     render() {
         if (this.state.results.length > this.state.zeroResults) {
             return (
@@ -74,13 +80,17 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-sm-12">
+                        <div className="col-sm-1">
+                        </div>
+                        <div className="col-sm-10">
                             <Article
                                 articles={this.state.results}
                                 title="Results"
-                                handleAtricleClick={this.handleAtricleSave}
+                                handleAtricleClick={this.saveArticle}
                                 glyphicon="glyphicon glyphicon glyphicon-floppy-disk"
-                            /> 
+                            />
+                        </div>
+                        <div className="col-sm-1">
                         </div>
                     </div>
                 </div>

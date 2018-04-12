@@ -53,13 +53,17 @@ class Archive extends Component {
     render() {
         return (
             <div className="container">
-                <div className="col-sm-12">
+                <div className="col-sm-1">
+                </div>
+                <div className="col-sm-10">
                     <Article
                         articles={this.state.results}
                         title="Archive"
                         handleAtricleClick={this.handleAtricleDelete}
                         glyphicon="glyphicon glyphicon-book"
                     />
+                </div>
+                <div className="col-sm-1">
                 </div>
             </div>
         ); // END RETURN
