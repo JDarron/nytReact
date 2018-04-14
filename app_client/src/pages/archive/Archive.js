@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../helpers/api/API";
-import SCRAPER from "../../helpers/scrapers/articleScraper";
 import Article from "../../components/Article";
 
 // ROUTES
@@ -25,15 +24,6 @@ class Archive extends Component {
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
-
-    scrapeArticleFromPage = url => {
-        SCRAPER
-            .scrapeArticle(url)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => console.log(err));
-    }; // END SCRAPER
 
     pushArticleIdToState = dbArticles => {
         return dbArticles.forEach(elem => {
@@ -71,7 +61,8 @@ class Archive extends Component {
                         title="Archive"
                         handleAtricleClick={this.handleAtricleDelete}
                         handleLinkClick={this.scrapeArticleFromPage}
-                        glyphicon="glyphicon glyphicon-book"
+                        glyphicon="glyphicon glyphicon-trash"
+                        toolTip="Delete"
                     />
                 </div>
                 <div className="col-sm-1">

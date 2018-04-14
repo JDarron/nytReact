@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../helpers/api/API";
-import SCRAPER from "../../helpers/scrapers/articleScraper";
 // COMPONENTS
 import Form from "../../components/Form";
 import Article from "../../components/Article";
@@ -27,15 +26,6 @@ class Home extends Component {
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
-
-    scrapeArticleFromPage = url => {
-        SCRAPER
-            .scrapeArticle(url)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => console.log(err));
-    }; // END SCRAPER
 
     saveArticle = id => {
         ArticleModel
@@ -88,7 +78,8 @@ class Home extends Component {
                                 title="Results"
                                 handleAtricleClick={this.saveArticle}
                                 handleLinkClick={this.scrapeArticleFromPage}
-                                glyphicon="glyphicon glyphicon glyphicon-floppy-disk"
+                                glyphicon="glyphicon glyphicon-save"
+                                toolTip="Save"
                             />
                         </div>
                         <div className="col-sm-1">

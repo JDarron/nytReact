@@ -4,13 +4,19 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 // NAVBAR STYLES
 import "./Navbar.css";
 
+const styles = {
+    navbar: {
+        borderRadius: 0
+    }
+}; // END STYLES 
+
 // NAVBAR COMPONENT
 class NavbarComponent extends Component {
     // RENDER
     render() {
         // RETURN
         return (
-            <Navbar inverse collapseOnSelect>
+            <Navbar inverse collapseOnSelect style={styles.navbar}>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="/">NYT Scrub</a>

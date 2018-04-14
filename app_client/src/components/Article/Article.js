@@ -1,16 +1,24 @@
 import React, { Component } from "react";
 // LINK FROM REACT ROUTER TO LINK TO ROUTE
 import { Link } from "react-router-dom";
-import { Table } from 'react-bootstrap';
+import { Table, Tooltip, OverlayTrigger } from 'react-bootstrap';
 // FORM STYLE
 import "./Article.css";
 
 // FORM COMPONENT
 class Article extends Component {
 
-    render() {
-        return (
 
+
+    render() {
+
+    const tooltip = (
+        <Tooltip id="tooltip">
+            {this.props.toolTip}
+        </Tooltip>
+    );
+    
+        return (
             <Table responsive>
                 <thead>
                     <tr>
@@ -27,7 +35,7 @@ class Article extends Component {
                                 <tr key={artcl._id.toString()}>
                                     <td>
                                         <div className="col-sm-11">
-                                            <a onClick={this.props.handleLinkClick.bind(this, artcl.web_url)} to="/">
+                                            <a href={artcl.web_url} target="_blank">
                                                 {artcl.headline.main}
                                             </a>
                                             <p>
@@ -35,12 +43,16 @@ class Article extends Component {
                                             </p>
                                         </div>
                                         <div className="col-sm-1">
-                                            <Link
-                                                className="btn btn-primary btn-lg"
-                                                onClick={this.props.handleAtricleClick.bind(this, artcl._id)}
-                                                to="/">
-                                                <span className={this.props.glyphicon}></span>
-                                            </Link>
+                                            <OverlayTrigger placement="right" overlay={tooltip}>
+                                                <Link
+                                                    className="btn btn-primary btn-md"
+                                                    onClick={this.props.handleAtricleClick.bind(this, artcl._id)}
+                                                    to="/"
+                                                    overlay={this.tooltip}>
+                                                    <span className={this.props.glyphicon}></span>
+                                                </Link>
+                                            </OverlayTrigger>
+
                                         </div>
                                     </td>
                                 </tr>
