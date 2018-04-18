@@ -43,7 +43,7 @@ module.exports = {
         console.log(req.params.id)
         model
             .Article
-            .remove({ _id: req.params.id })
+            .remove({ articleId: req.params.id })
             .then(resArticle => res.json(`Deletion of ID: ${req.params.id} was Successfull!`))
             .catch(err => console.error(err));
     } // END DELETE

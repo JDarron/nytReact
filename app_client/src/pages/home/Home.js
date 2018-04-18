@@ -20,6 +20,7 @@ class Home extends Component {
             .searchKeyWord(query)
             .then(res => {
                 const resultsFromApi = res.data.response.docs;
+                console.log(resultsFromApi);
                 this.setState({
                     results: resultsFromApi
                 });
@@ -77,9 +78,9 @@ class Home extends Component {
                                 articles={this.state.results}
                                 title="Results"
                                 handleAtricleClick={this.saveArticle}
-                                handleLinkClick={this.scrapeArticleFromPage}
                                 glyphicon="glyphicon glyphicon-save"
                                 toolTip="Save"
+                                route="/"
                             />
                         </div>
                         <div className="col-sm-1">

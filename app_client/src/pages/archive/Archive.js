@@ -5,28 +5,32 @@ import Article from "../../components/Article";
 // ROUTES
 import ArticleModel from "../../helpers/models/ArticleModel";
 
-class Archive extends Component {
-
-    state = {
+const initialState = {
         results: [],
         idQuery: []
+};
+
+class Archive extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = initialState;
     }; // END STATE
 
-    searchNyt = query => {
+    searchNyt = id => {
         API
-            .serchId(query)
+            .serchId(id)
             .then(res => {
-                const resultsFromApi = res.data.response.docs;
+                let resultsFromApi = res.data.response.docs;
                 this.setState({
                     results: resultsFromApi
                 });
-                console.log(this.state.results);
             })
             .catch(err => console.log(err));
     }; // END NYT SEARCH
 
     pushArticleIdToState = dbArticles => {
-        return dbArticles.forEach(elem => {
+        dbArticles.forEach(elem => {
             this.setState({
                 idQuery: [...this.state.idQuery, elem.articleId]
             }); // END SET STATE
@@ -34,20 +38,32 @@ class Archive extends Component {
     }; // END PUSH
 
     componentDidMount = () => {
+        this.getAllArticlesFromDatabase();
+    }; // END COMPONENT DID MOUNT
+
+    getAllArticlesFromDatabase = () => {
         ArticleModel
             .getAll()
-            .then(resp => {
-                const articlesForPushing = resp.data;
-                this.pushArticleIdToState(articlesForPushing);
+            .then(res => {
+                this.pushArticleIdToState(res.data);
             })
             .then(() => {
                 return this.searchNyt(this.state.idQuery);
             })
             .catch(err => console.error(err));
-    }// END COMPONENT DID MOUNT
+    }; // END 
 
-    handleAtricleDelete = () => {
-        console.log("In the handle delete function.");
+    handleAtricleDelete = id => {
+        ArticleModel
+            .delete(id)
+            .then(res => {
+                const i = this.state.results.findIndex((elem) => {
+                    return elem._id === id;
+                });
+                this.state.results.splice(i, 1);
+                this.setState({results: this.state.results});
+            })
+            .catch(err => console.error(err));
     }; // END HANDLE DELETE
 
     render() {
@@ -60,9 +76,9 @@ class Archive extends Component {
                         articles={this.state.results}
                         title="Archive"
                         handleAtricleClick={this.handleAtricleDelete}
-                        handleLinkClick={this.scrapeArticleFromPage}
                         glyphicon="glyphicon glyphicon-trash"
                         toolTip="Delete"
+                        route="/archive"
                     />
                 </div>
                 <div className="col-sm-1">

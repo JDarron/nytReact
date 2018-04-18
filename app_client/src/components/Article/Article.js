@@ -47,7 +47,7 @@ class Article extends Component {
                                                 <Link
                                                     className="btn btn-primary btn-md"
                                                     onClick={this.props.handleAtricleClick.bind(this, artcl._id)}
-                                                    to="/"
+                                                    to={this.props.route}
                                                     overlay={this.tooltip}>
                                                     <span className={this.props.glyphicon}></span>
                                                 </Link>
