@@ -6,8 +6,8 @@ import Article from "../../components/Article";
 import ArticleModel from "../../helpers/models/ArticleModel";
 
 const initialState = {
-        results: [],
-        idQuery: []
+    results: [],
+    idQuery: []
 };
 
 class Archive extends Component {
@@ -39,7 +39,7 @@ class Archive extends Component {
 
     componentDidMount = () => {
         this.getAllArticlesFromDatabase();
-    }; // END COMPONENT DID MOUNT
+    }; // END MOUNT
 
     getAllArticlesFromDatabase = () => {
         ArticleModel
@@ -51,17 +51,21 @@ class Archive extends Component {
                 return this.searchNyt(this.state.idQuery);
             })
             .catch(err => console.error(err));
-    }; // END 
+    }; // END GET ARTICLES
+
+    removeArticleFromResults = id => {
+        const i = this.state.results.findIndex((elem) => {
+            return elem._id === id;
+        });
+        this.state.results.splice(i, 1);
+        this.setState({ results: this.state.results });
+    }; // END REMOOVE ARTICLE FROM RESULTS
 
     handleAtricleDelete = id => {
         ArticleModel
             .delete(id)
             .then(res => {
-                const i = this.state.results.findIndex((elem) => {
-                    return elem._id === id;
-                });
-                this.state.results.splice(i, 1);
-                this.setState({results: this.state.results});
+                this.removeArticleFromResults(id);
             })
             .catch(err => console.error(err));
     }; // END HANDLE DELETE
