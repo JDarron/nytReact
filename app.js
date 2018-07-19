@@ -5,8 +5,7 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , logger = require('morgan')
     , mongoose = require('mongoose')
-    , apiRoutes = require('./app_api/routes/article.route')
-    , isDev = process.env.NODE_ENV === 'development';
+    , apiRoutes = require('./app_api/routes/article.route');
 
 // set port
 const port = process.env.PORT || 3001;
@@ -22,12 +21,12 @@ const app = express();
 // configure body parser to parse requests as json
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// configure morgan to log requests to console
 app.use(logger('dev'));
+
 // serve up 'public' folder
-if (isDev) {
-    app.use(express.static('./app_client/public'));
-}
-app.use(express.static('./app_client/build'));
+app.use(express.static('./app_client/public'));
 
 // =====================================================================================
 // MONGOOSE CONFIG
