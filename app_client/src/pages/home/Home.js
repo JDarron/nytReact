@@ -20,7 +20,6 @@ class Home extends Component {
             .searchKeyWord(query)
             .then(res => {
                 const resultsFromApi = res.data.response.docs;
-                console.log(resultsFromApi);
                 this.setState({
                     results: resultsFromApi
                 });

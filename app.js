@@ -3,7 +3,6 @@
 // =====================================================================================
 const express = require('express')
     , bodyParser = require('body-parser')
-    , axios = require('axios')
     , logger = require('morgan')
     , mongoose = require('mongoose')
     , apiRoutes = require('./app_api/routes/article.route');
