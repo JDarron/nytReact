@@ -54,3 +54,5 @@ app.use('/api', apiRoutes);
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
 });
+
+// adding notes to push to repo.
