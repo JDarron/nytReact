@@ -19,7 +19,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/nyTimesReact
 const app = express();
 
 // configure body parser to parse requests as json
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // configure morgan to log requests to console
