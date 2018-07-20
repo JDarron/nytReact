@@ -36,8 +36,10 @@ app.use(logger('dev'));
 app.use(apiRoutes);
 if (isDev) {
     app.use(express.static('app_client/public'));
+} else {
+    app.use(express.static('app_client/build'));
 }
-app.use(express.static('app_client/build'));
+
 
 // =====================================================================================
 // MONGOOSE CONFIG
