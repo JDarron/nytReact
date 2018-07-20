@@ -18,15 +18,25 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/nyTimesReact
 // initialize express
 const app = express();
 
-// configure body parser to parse requests as json
-app.use(bodyParser.urlencoded({ extended: true }));
+// // configure body parser to parse requests as json
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+
+// // configure morgan to log requests to console
+// app.use(logger('dev'));
+
+// // serve up 'public' folder
+// app.use(express.static('./app_client/public'));
 app.use(bodyParser.json());
-
-// configure morgan to log requests to console
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(logger('dev'));
-
-// serve up 'public' folder
-app.use(express.static('./app_client/public'));
+app.use(routes);
+if (isDev) {
+    app.use(express.static('app_client/public'));
+}
+app.use(express.static('app_client/build'));
 
 // =====================================================================================
 // MONGOOSE CONFIG
