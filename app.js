@@ -5,7 +5,8 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , logger = require('morgan')
     , mongoose = require('mongoose')
-    , apiRoutes = require('./app_api/routes/article.route');
+    , apiRoutes = require('./app_api/routes/article.route')
+    , isDev = process.env.NODE_ENV === 'development';
 
 // set port
 const port = process.env.PORT || 3001;
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(logger('dev'));
-app.use(routes);
+app.use(apiRoutes);
 if (isDev) {
     app.use(express.static('app_client/public'));
 }
