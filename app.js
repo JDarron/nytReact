@@ -7,6 +7,7 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , logger = require('morgan')
     , mongoose = require('mongoose')
+    , path = require('path')
     , apiRoutes = require('./app_api/routes/article.route');
 
 
@@ -29,7 +30,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // serve up 'public' folder
-app.use(express.static('./app_client/public'));
+app.use(express.static(path.join(__dirname, './app_client/public')));
 
 // =====================================================================================
 // MONGOOSE CONFIG
