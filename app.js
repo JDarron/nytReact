@@ -1,11 +1,14 @@
 // =====================================================================================
 // DEPENDENCIES
 // =====================================================================================
+require("dotenv").config();
+
 const express = require('express')
     , bodyParser = require('body-parser')
     , logger = require('morgan')
     , mongoose = require('mongoose')
     , apiRoutes = require('./app_api/routes/article.route');
+
 
 // set port
 const port = process.env.PORT || 3001;
