@@ -14,7 +14,7 @@ const express = require('express')
 // set port
 const port = process.env.PORT || 3001;
 
-const MONGODB_URI ="mongodb://admin:rootroot1@ds143511.mlab.com:43511/heroku_0vst7z49" || 'mongodb://localhost/nyTimesReact';
+const MONGODB_URI = "mongodb://admin:rootroot1@ds143511.mlab.com:43511/heroku_0vst7z49" || 'mongodb://localhost/nyTimesReact';
 
 // =====================================================================================
 // MIDDLEWARE
@@ -44,6 +44,7 @@ mongoose.connect(MONGODB_URI)
         console.log('Successfully connected to Mongo database');
     })
     .catch(err => {
+        console.log("NO", process.env.MONGODB_URI)
         console.error(err);
     });
 
