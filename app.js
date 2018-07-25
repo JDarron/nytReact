@@ -30,8 +30,15 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // serve up 'public' folder
-app.use(express.static(path.join(__dirname,'/app_client/build')));
-app.use(express.static(path.join(__dirname, '/app_client/build/js')));
+// Serve static assets
+
+app.use('public', express.static(path.join(__dirname, 'build')));
+
+// Always return the main index.html
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
 
 // =====================================================================================
