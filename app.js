@@ -31,7 +31,7 @@ app.use(logger('dev'));
 
 // serve up 'public' folder
 app.use(express.static(path.join(__dirname, '/app_client/build')));
-
+console.log(__dirname + '/app_client/build')
 // =====================================================================================
 // MONGOOSE CONFIG
 // =====================================================================================
