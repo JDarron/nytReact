@@ -13,19 +13,6 @@ import Archive from "./pages/archive/Archive";
 import './App.css';
 
 // APP COMPONENT
-/*
-<Router>
-          <div>
-            }
-<Navbar />
- 
-<Route exact path="/" component={Home} />
- 
-<Route exact path="/archive" component={Archive} />
- }
-          </div >
-        </Router >
-*/
 class App extends Component {
 
   render() {
@@ -33,7 +20,17 @@ class App extends Component {
     return (
       // ROUTES TO PAGES
       <div>
-        hello
+        <Router>
+          <div>
+            {/* NAVBAR COMPONENT */}
+            <Navbar />
+            {/* HOME PAGE */}
+            <Route exact path="/" component={Home}/>
+            {/* ARTICLE ADD PAGE */}
+            <Route exact path="/archive" component={Archive}/>
+            {/* FOOTER COMPONENT */}
+          </div>
+        </Router>
       </div>
     ); // END RETURN 
   };  // END RENDER 
