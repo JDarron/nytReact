@@ -32,7 +32,7 @@ app.use(logger('dev'));
 // serve up 'public' folder
 // Serve static assets
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static('./app_client/build'));
 
 
 // =====================================================================================
