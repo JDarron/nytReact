@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // serve up 'public' folder
-app.use(express.static('./app_client/build'));
+app.use(express.static(path.join(__dirname,'/app_client/build'));
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
