@@ -1,38 +1,38 @@
 {
-  "name": "nytreact",
-  "version": "1.0.0",
-  "description": "Mongo Project",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js && npm run build --prefix ./app_client"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/npm/cli.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.2",
-    "cheerio": "^1.0.0-rc.2",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.2",
-    "mongodb": "^3.1.1",
-    "mongojs": "^2.5.0",
-    "mongoose": "^5.0.7",
-    "morgan": "^1.9.0",
-    "mysql2": "^1.5.2",
-    "npm": "^6.2.0",
-    "path": "^0.12.7",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-router-dom": "^4.2.2",
-    "sequelize": "^4.33.4"
-  },
-      "engines": {
-        "node": "9.5.0",
-        "npm": "5.6.0"
-      }
+	"name": "nytreact",
+	"version": "1.0.0",
+	"description": "Mongo Project",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js && npm run build --prefix ./app_client"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/npm/cli.git"
+	},
+	"author": "Joshua Spears",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"body-parser": "^1.18.2",
+		"cheerio": "^1.0.0-rc.2",
+		"dotenv": "^6.0.0",
+		"express": "^4.16.2",
+		"mongodb": "^3.1.1",
+		"mongojs": "^2.5.0",
+		"mongoose": "^5.0.7",
+		"morgan": "^1.9.0",
+		"mysql2": "^1.5.2",
+		"npm": "^6.2.0",
+		"path": "^0.12.7",
+		"react": "^16.3.1",
+		"react-dom": "^16.3.1",
+		"react-router-dom": "^4.2.2",
+		"sequelize": "^4.33.4"
+	},
+	"engines": {
+		"node": "9.5.0",
+		"npm": "5.6.0"
+	}
 }
