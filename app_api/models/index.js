@@ -1,5 +1,3 @@
 module.exports = {
-    Article: require("./article.model")
+    Article: require("./Article.model")
 };
-
-const db = require('../models');

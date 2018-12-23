@@ -1,4 +1,4 @@
-var cheerio = require("cheerio");
+const cheerio = require("cheerio");
 
 module.exports = {
 
