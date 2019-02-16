@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
 mongoose.Promise = Promise;
 
 // connect to the MongoDB
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(() => {
         console.log('Successfully connected to Mongo database');
     })
