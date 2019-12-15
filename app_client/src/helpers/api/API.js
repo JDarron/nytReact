@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const APIKEY = "dde781c06452450886e74bef516a660f";
+const APIKEY = "WIATc5qX1AMNsHnHhnmQlzvN0P4KOchn";
 const BASEURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${APIKEY}`;
 // PARAM REQUIRMENTS 
-const keyWordParam = "&q=";
+const queryParam = "&q=";
 const idParam = "&fq=_id:"
 
 export default {
     
     searchKeyWord: query => {
-        return axios.get(BASEURL + keyWordParam + query);
+        return axios.get(BASEURL + queryParam + query);
     },
 
     serchId: id => {

@@ -14,22 +14,22 @@
 	"author": "Joshua Spears",
 	"license": "ISC",
 	"dependencies": {
-		"axios": "^0.18.0",
+		"axios": "^0.18.1",
 		"body-parser": "^1.18.2",
 		"cheerio": "^1.0.0-rc.2",
 		"dotenv": "^6.0.0",
 		"express": "^4.16.2",
-		"mongodb": "^3.1.1",
-		"mongojs": "^2.5.0",
+		"mongodb": "^3.4.0",
+		"mongojs": "^3.1.0",
 		"mongoose": "^5.4.13",
 		"morgan": "^1.9.1",
 		"mysql2": "^1.5.2",
-		"npm": "^6.8.0",
+		"npm": "^6.13.4",
 		"path": "^0.12.7",
 		"react": "^16.3.1",
-		"react-dom": "^16.3.1",
+		"react-dom": "^16.12.0",
 		"react-router-dom": "^4.2.2",
-		"sequelize": "^4.33.4"
+		"sequelize": "^4.44.3"
 	},
 	"engines": {
 		"node": "9.5.0",

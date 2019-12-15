@@ -1,69 +1,47 @@
 // =====================================================================================
 // DEPENDENCIES
 // =====================================================================================
-require("dotenv").config();
+require('dotenv').config()
 
 const express = require('express')
-    , bodyParser = require('body-parser')
-    , logger = require('morgan')
-    , mongoose = require('mongoose')
-    , path = require('path')
-    , apiRoutes = require('./app_api/routes/article.route');
+const bodyParser = require('body-parser')
+const logger = require('morgan')
+const mongoose = require('mongoose')
+const path = require('path')
+const apiRoutes = require('./app_api/routes/article.route')
 
 
-// set port
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3001
 
-const MONGODB_URI = "mongodb://admin:rootroot1@ds143511.mlab.com:43511/heroku_0vst7z49" || 'mongodb://localhost/nyTimesReact';
+const MONGODB_URI = 'mongodb://localhost/nyTimesReact'
 
-// =====================================================================================
-// MIDDLEWARE
-// =====================================================================================
-// initialize express
-const app = express();
+const app = express()
 
-// configure body parser to parse requests as json
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-// configure morgan to log requests to console
-app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(logger('dev'))
 
 // serve up 'public' folder
 // Serve static assets
+app.use('/api', apiRoutes)
+app.use(express.static(path.join(__dirname, './app_client/build')))
 
-app.use(express.static(path.join(__dirname, './app_client/build')));
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, './app_client/build', 'index.html'))
+})
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './app_client/build', 'index.html'));
-});
 
-// =====================================================================================
-// MONGOOSE CONFIG
-// =====================================================================================
-// set up mongoose to leverage built-in JavaScript ES6 Promises
-mongoose.Promise = Promise;
+mongoose.Promise = Promise
 
-// connect to the MongoDB
+
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
-    .then(() => {
-        console.log('Successfully connected to Mongo database');
-    })
+    .then(() => console.log('Successfully connected to Mongo database'))
     .catch(err => {
-        console.log("NO", process.env.MONGODB_URI)
-        console.error(err);
-    });
+        console.error(err)
+    })
 
-// =====================================================================================
-// ROUTES
-// =====================================================================================
-app.use('/api', apiRoutes);
 
-// =====================================================================================
-// LISTENING
-// =====================================================================================
 app.listen(port, () => {
-    console.log(`App running on port ${port}`);
-});
-
-// adding notes to push to repo.
+    console.log(`App running on port ${port}`)
+})

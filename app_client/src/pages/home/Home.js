@@ -24,7 +24,7 @@ class Home extends Component {
                     results: resultsFromApi
                 });
             })
-            .catch(err => console.log(err));
+            .catch(err => console.error(err));
     }; // END NYT SEARCH
 
     saveArticle = id => {
