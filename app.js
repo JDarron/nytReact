@@ -1,6 +1,3 @@
-// =====================================================================================
-// DEPENDENCIES
-// =====================================================================================
 require('dotenv').config()
 
 const express = require('express')
@@ -21,10 +18,8 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(logger('dev'))
-
-// serve up 'public' folder
-// Serve static assets
 app.use('/api', apiRoutes)
+
 app.use(express.static(path.join(__dirname, './app_client/build')))
 
 app.get('*', function (req, res) {
@@ -33,8 +28,6 @@ app.get('*', function (req, res) {
 
 
 mongoose.Promise = Promise
-
-
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(() => console.log('Successfully connected to Mongo database'))
     .catch(err => {
